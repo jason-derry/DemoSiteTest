@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -35,7 +34,7 @@ WebDriver driver;
 		demoSite.fillForm(Constants.USER, Constants.PASS);
 		driver.get("http://thedemosite.co.uk/login.php");
 		demoSite.fillForm(Constants.USER, Constants.PASS);
-		Thread.sleep(1000);
+		assertEquals("login was not successful", "**Successful Login**", driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/big/blockquote/blockquote/font/center/b")).getText());
 	}
 	
 }
