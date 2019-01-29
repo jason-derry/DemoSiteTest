@@ -31,8 +31,10 @@ WebDriver driver;
 	public void testRegisterLogin() throws InterruptedException {
 		driver.manage().window().maximize();
 		driver.get("http://thedemosite.co.uk/addauser.php");
-		DemoSiteRegister demoSiteRegister = PageFactory.initElements(driver, DemoSiteRegister.class);
-		demoSiteRegister.addUser("nightmayr", "chicken1");
+		DemoSite demoSite = PageFactory.initElements(driver, DemoSite.class);
+		demoSite.fillForm(Constants.USER, Constants.PASS);
+		driver.get("http://thedemosite.co.uk/login.php");
+		demoSite.fillForm(Constants.USER, Constants.PASS);
 		Thread.sleep(1000);
 	}
 	
